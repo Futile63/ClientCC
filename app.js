@@ -127,15 +127,19 @@ function renderToday(rows) {
     const li = document.createElement("li");
     li.className = "todayItem";
 
-    const duePillClass =
-      info.overdueDays > 0 ? "pill danger" :
-      info.daysUntilDue === 0 ? "pill warn" :
-      "pill";
+const duePillClass =
+  !c.lastTouch ? "pill warn" :
+  info.overdueDays > 0 ? "pill danger" :
+  info.daysUntilDue === 0 ? "pill warn" :
+  "pill";
 
-    const dueText =
-      info.overdueDays > 0 ? `Overdue ${info.overdueDays}d` :
-      info.daysUntilDue === 0 ? "Due today" :
-      `Due in ${info.daysUntilDue}d`;
+
+const dueText =
+  !c.lastTouch ? "Needs first touch" :
+  info.overdueDays > 0 ? `Overdue ${info.overdueDays}d` :
+  info.daysUntilDue === 0 ? "Due today" :
+  `Due in ${info.daysUntilDue}d`;
+
 
     li.innerHTML = `
       <div class="todayTopRow">
@@ -274,3 +278,4 @@ function escapeHtml(str) {
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
 }
+
