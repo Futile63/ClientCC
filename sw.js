@@ -1,4 +1,4 @@
-const CACHE_NAME = "ccc-cache-v1";
+const CACHE_NAME = "ccc-cache-v2";
 const ASSETS = [
   "./",
   "./index.html",
@@ -23,3 +23,4 @@ self.addEventListener("fetch", (event) => {
     caches.match(event.request).then((cached) => cached || fetch(event.request))
   );
 });
+
