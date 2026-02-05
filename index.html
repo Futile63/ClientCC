@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Client Command Center</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Client Command Center</h1>
+    <p class="sub">Simple, offline-friendly client tracker.</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Add Client</h2>
+      <form id="clientForm">
+        <div class="row">
+          <label>
+            Client Name
+            <input id="name" required placeholder="Acme Dental" />
+          </label>
+          <label>
+            Tier
+            <select id="tier">
+              <option value="3">Tier 3</option>
+              <option value="2">Tier 2</option>
+              <option value="1">Tier 1</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="row">
+          <label>
+            Primary Contact
+            <input id="contact" placeholder="Name / Email / Phone" />
+          </label>
+          <label>
+            Notes
+            <input id="notes" placeholder="Quick note..." />
+          </label>
+        </div>
+
+        <button type="submit">Add</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <div class="row row-tight">
+        <h2>Clients</h2>
+        <input id="search" placeholder="Search..." />
+      </div>
+
+      <div class="tableWrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Client</th>
+              <th>Tier</th>
+              <th>Last Touch</th>
+              <th>Next Action</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="clientList"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <template id="rowTemplate">
+    <tr>
+      <td class="clientName"></td>
+      <td class="clientTier"></td>
+      <td class="clientTouch"></td>
+      <td class="clientNext"></td>
+      <td class="actions">
+        <button class="touchBtn">Touched Today</button>
+        <button class="editBtn">Edit</button>
+        <button class="delBtn danger">Delete</button>
+      </td>
+    </tr>
+  </template>
+
+  <dialog id="editDialog">
+    <form method="dialog" class="card dialogCard" id="editForm">
+      <h2>Edit Client</h2>
+
+      <input type="hidden" id="editId" />
+
+      <label>Client Name
+        <input id="editName" required />
+      </label>
+
+      <label>Tier
+        <select id="editTier">
+          <option value="3">Tier 3</option>
+          <option value="2">Tier 2</option>
+          <option value="1">Tier 1</option>
+        </select>
+      </label>
+
+      <label>Primary Contact
+        <input id="editContact" />
+      </label>
+
+      <label>Notes
+        <input id="editNotes" />
+      </label>
+
+      <label>Next Action
+        <input id="editNextAction" />
+      </label>
+
+      <div class="row row-right">
+        <button value="cancel" class="ghost">Cancel</button>
+        <button value="default">Save</button>
+      </div>
+    </form>
+  </dialog>
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("./sw.js");
+  }
+</script>
+
+<script src="app.js"></script>
+</body>
+</html>
