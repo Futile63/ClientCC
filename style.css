@@ -74,4 +74,71 @@ button.danger {
   background: transparent;
   border: 1px solid rgba(255,107,107,0.45);
   color: var(--danger);
+
+}
+.hint {
+  color: var(--muted);
+  font-size: 13px;
+  text-align: right;
+}
+
+.todayList {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0 0;
+  display: grid;
+  gap: 10px;
+}
+
+.todayItem {
+  display: grid;
+  gap: 6px;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(255,255,255,0.03);
+}
+
+.todayTopRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+}
+
+.todayName {
+  font-weight: 800;
+}
+
+.pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.pill {
+  border: 1px solid var(--border);
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  color: var(--text);
+  background: rgba(255,255,255,0.03);
+}
+
+.pill.warn {
+  border-color: rgba(192, 122, 58, 0.7);
+}
+
+.pill.danger {
+  border-color: rgba(255, 107, 107, 0.7);
+  color: var(--danger);
+}
+
+.todayMeta {
+  color: var(--muted);
+  font-size: 13px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
 }
