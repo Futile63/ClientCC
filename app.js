@@ -22,15 +22,26 @@ render();
 clientForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
+  const nameEl = document.getElementById("name");
+  const tierEl = document.getElementById("tier");
+  const contactEl = document.getElementById("contact");
+  const notesEl = document.getElementById("notes");
+
   const client = {
     id: crypto.randomUUID(),
-    name: name.value.trim(),
-    tier: Number(tier.value),
-    contact: contact.value.trim(),
-    notes: notes.value.trim(),
+    name: nameEl.value.trim(),
+    tier: Number(tierEl.value),
+    contact: contactEl.value.trim(),
+    notes: notesEl.value.trim(),
     nextAction: "",
     lastTouch: ""
   };
+
+  state.clients.unshift(client);
+  saveAndRender();
+  clientForm.reset();
+});
+
 
   state.clients.unshift(client);
   saveAndRender();
@@ -182,3 +193,4 @@ function renderToday(clients) {
     todayList.appendChild(li);
   }
 }
+
